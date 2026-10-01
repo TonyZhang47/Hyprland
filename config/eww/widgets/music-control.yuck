@@ -1,0 +1,57 @@
+(defwidget music-widget []
+  (box :class "music-widget"
+       :orientation "horizontal"
+       :space-evenly "false"
+       :halign "fill"
+       :valign "center"
+       :hexpand "true"
+       :vexpand "true"
+    (box :class "song-cover-art-widget"
+         :vexpand "false"
+         :hexpand "false"
+         :valign "center"
+         :halign "center"
+         :style {current-music-cover != "" ? "background-image: url('" + current-music-cover + "');" : ""}
+      (label :class "song-cover-glyph"
+             :text {current-music-cover != "" ? "" : "󰝚"}))
+    (box :class "parentbox-widget"
+         :orientation "vertical"
+         :space-evenly "false"
+         :spacing 2
+         :hexpand "true"
+         :valign "center"
+      (label :class "music-title"
+             :text {music != "" ? music : "Not playing"}
+             :halign "start"
+             :truncate "true"
+             :limit-width 28)
+      (label :class "artist-widget"
+             :text {artist != "" ? artist : " "}
+             :halign "start"
+             :truncate "true"
+             :limit-width 28)
+      (scale :class "musicbar-widget"
+             :hexpand "true"
+             :value {current-music-seek != "" ? current-music-seek : "0"}
+             :orientation "horizontal"
+             :max 101
+             :min 0
+             :onchange "~/.config/eww/scripts/set-music-seek.sh {}")
+      (box :class "music-control-widget"
+           :orientation "horizontal"
+           :space-evenly "false"
+           :spacing 18
+           :halign "center"
+           :hexpand "true"
+        (button :class "prev-widget"
+                :tooltip "Previous"
+                :onclick "playerctl previous"
+                "")
+        (button :class "pause-widget"
+                :tooltip "Play / pause"
+                :onclick "playerctl play-pause"
+                {music-status == "Playing" ? "" : ""})
+        (button :class "next-widget"
+                :tooltip "Next"
+                :onclick "playerctl next"
+                "")))))

@@ -1,0 +1,95 @@
+;; Volume / brightness / quick tiles for the Super+C overlay.
+
+(defwidget volume-controls []
+  (box :class "slider-row"
+       :orientation "horizontal"
+       :space-evenly "false"
+       :spacing 10
+       :valign "center"
+       :halign "fill"
+       :hexpand "true"
+    (button :class "slider-icon"
+            :tooltip "Volume"
+            :onclick "~/.config/eww/scripts/pavucontrol.sh"
+            volume-icon)
+    (scale :class "slider-bar volume-control-bar"
+           :hexpand "true"
+           :value current-volume
+           :orientation "horizontal"
+           :max 101
+           :min 0
+           :onchange "pactl set-sink-volume $(pactl get-default-sink) {}%; ~/.config/eww/scripts/notify.sh --throttle volume Volume Volume {}%")))
+
+(defwidget brightness-controls []
+  (box :class "slider-row"
+       :orientation "horizontal"
+       :space-evenly "false"
+       :spacing 10
+       :valign "center"
+       :halign "fill"
+       :hexpand "true"
+    (button :class "slider-icon"
+            :tooltip "Brightness"
+            "󰖨")
+    (scale :class "slider-bar brightness-control-bar"
+           :hexpand "true"
+           :value current-brightness
+           :orientation "horizontal"
+           :max 101
+           :min 0
+           :onchange "brightnessctl s {}%; ~/.config/eww/scripts/notify.sh --throttle brightness Brightness Brightness {}%")))
+
+(defwidget toprow-controls []
+  (box :class "toprow-controls"
+       :orientation "horizontal"
+       :space-evenly "true"
+       :spacing 8
+       :halign "fill"
+       :hexpand "true"
+    (box :class "quick-tile" :hexpand "true" :halign "fill"
+      (button :class "quick-tile-btn" :hexpand "true" :halign "fill"
+              :tooltip "Wi-Fi"
+              :onclick "~/.config/eww/scripts/wifi-menu.sh &"
+              wifi-strength))
+    (box :class "quick-tile" :hexpand "true" :halign "fill"
+      (button :class "quick-tile-btn" :hexpand "true" :halign "fill"
+              :tooltip "Bluetooth"
+              :onclick "~/.config/eww/scripts/bluetuith.sh &"
+              bluetooth-status))
+    (box :class "quick-tile" :hexpand "true" :halign "fill"
+      (button :class "quick-tile-btn" :hexpand "true" :halign "fill"
+              :tooltip "Idle lock"
+              :onclick "~/.config/eww/scripts/toggle-idle.sh"
+              {idle ? "" : ""}))
+    (box :class {warm-light ? "quick-tile quick-tile-on" : "quick-tile"} :hexpand "true" :halign "fill"
+      (button :class "quick-tile-btn" :hexpand "true" :halign "fill"
+              :tooltip "Warm light"
+              :onclick "~/.config/eww/scripts/toggle-warm-light.sh &"
+              {warm-light ? "󰖔" : "󰖙"}))
+    (box :class "quick-tile" :hexpand "true" :halign "fill"
+      (button :class "quick-tile-btn" :hexpand "true" :halign "fill"
+              :tooltip "Screenshot"
+              :onclick "~/.config/eww/scripts/screenshot.sh &"
+              ""))))
+
+(defwidget bar-controls []
+  (box :class "bar-controls"
+       :orientation "vertical"
+       :space-evenly "false"
+       :spacing 8
+       :halign "fill"
+       :hexpand "true"
+    (volume-controls)
+    (brightness-controls)))
+
+(defwidget controls []
+  (box :class "controls"
+       :orientation "vertical"
+       :space-evenly "false"
+       :spacing 10
+       :halign "fill"
+       :valign "center"
+       :vexpand "true"
+       :hexpand "true"
+    (bar-controls)
+    (toprow-controls)))

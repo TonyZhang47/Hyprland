@@ -1,0 +1,31 @@
+[general]
+framerate = 60
+autosens = 1
+sensitivity = 100
+bars = 0
+bar_width = 2
+bar_spacing = 1
+sleep_timer = 3
+
+[input]
+method = pulse
+source = auto
+
+[output]
+method = noncurses
+channels = stereo
+show_idle_bar_heads = 1
+
+[smoothing]
+noise_reduction = 77
+
+[color]
+gradient = 1
+gradient_color_1 = '{{base16.base0c.default.hex}}'
+gradient_color_2 = '{{base16.base0d.default.hex}}'
+gradient_color_3 = '{{base16.base0e.default.hex}}'
+gradient_color_4 = '{{base16.base07.default.hex}}'
+gradient_color_5 = '{{base16.base0a.default.hex}}'
+gradient_color_6 = '{{base16.base09.default.hex}}'
+gradient_color_7 = '{{base16.base0f.default.hex}}'
+gradient_color_8 = '{{base16.base08.default.hex}}'

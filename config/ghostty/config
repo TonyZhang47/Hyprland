@@ -1,0 +1,15 @@
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+
+background-opacity = 0.8
+window-padding-x = 18
+window-padding-y = 12
+
+cursor-style = bar
+cursor-style-blink = true
+
+# Palette is generated from the wallpaper, same pipeline as kitty.
+config-file = ? ~/.config/ghostty/ghostty-colors
+
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
