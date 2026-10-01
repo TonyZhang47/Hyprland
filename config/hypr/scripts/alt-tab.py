@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
-"""Alt+Tab: next/prev application on the current workspace only."""
+"""Alt+Tab: swap the two most recent applications on this workspace."""
 import json
 import subprocess
-import sys
-
-BACK = "--back" in sys.argv
 
 
 def hypr(*args):
@@ -56,7 +53,7 @@ def main():
     order = sorted(newest.values(), key=lambda w: w.get("focusHistoryID", 9999))
     if len(order) < 2:
         return
-    target = order[-1] if BACK else order[1]
+    target = order[1]
     addr = target.get("address")
     if not addr:
         return

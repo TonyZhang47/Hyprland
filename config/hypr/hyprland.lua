@@ -380,10 +380,10 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = "special:mag
 -- Lock the session
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("/home/ping/.config/eww/scripts/lock.sh"))
 
--- Alt+Tab cycles applications (one entry per class, most-recent first),
--- including windows on other workspaces. Alt+Shift+Tab goes the other way.
+-- Alt+Tab swaps the two most recent apps on this workspace.
+-- Super+Tab lists every window here so you can jump to any of them.
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/alt-tab.py"))
-hl.bind("ALT + SHIFT + TAB", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/alt-tab.py --back"))
+hl.bind("SUPER + TAB", hl.dsp.exec_cmd("/home/ping/.config/hypr/scripts/window-switcher.py"))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
