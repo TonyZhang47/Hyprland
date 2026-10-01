@@ -1,11 +1,1 @@
-Backup of ping's configs from ~/.config, plus shell dotfiles and
-~/.local/bin/eww + hyprsunset.
-
-Left out on purpose (huge app data, not the rice):
-  discord, mozilla/firefox, Cursor, Code, Code - OSS, heroic,
-  StardewValley, pulse, libvirt, lock/socket files.
-
-Restore example:
-  cp -a ~/apple/config/. ~/.config/
-  cp -a ~/apple/local-bin/. ~/.local/bin/
-  cp -a ~/apple/home/. ~/
+Backup of ping's configs
