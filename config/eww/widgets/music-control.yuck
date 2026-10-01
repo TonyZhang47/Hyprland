@@ -12,7 +12,13 @@
          :valign "center"
          :halign "center"
          :style {current-music-cover != "" ? "background-image: url('" + current-music-cover + "');" : ""}
-      (label :class "song-cover-glyph"
+      (label :class "icon-glyph song-cover-glyph"
+             :halign "center"
+             :valign "center"
+             :hexpand true
+             :vexpand true
+             :xalign 0.5
+             :yalign 0.5
              :text {current-music-cover != "" ? "" : "󰝚"}))
     (box :class "parentbox-widget"
          :orientation "vertical"
@@ -43,15 +49,21 @@
            :spacing 18
            :halign "center"
            :hexpand "true"
-        (button :class "prev-widget"
-                :tooltip "Previous"
-                :onclick "playerctl previous"
-                "")
-        (button :class "pause-widget"
-                :tooltip "Play / pause"
-                :onclick "playerctl play-pause"
-                {music-status == "Playing" ? "" : ""})
-        (button :class "next-widget"
-                :tooltip "Next"
-                :onclick "playerctl next"
-                "")))))
+        (icon-btn :class "prev-widget"
+                  :tooltip "Previous"
+                  :onclick "playerctl previous"
+                  :icon ""
+                  :hexpand false
+                  :vexpand false)
+        (icon-btn :class "pause-widget"
+                  :tooltip "Play / pause"
+                  :onclick "playerctl play-pause"
+                  :icon {music-status == "Playing" ? "" : ""}
+                  :hexpand false
+                  :vexpand false)
+        (icon-btn :class "next-widget"
+                  :tooltip "Next"
+                  :onclick "playerctl next"
+                  :icon ""
+                  :hexpand false
+                  :vexpand false)))))

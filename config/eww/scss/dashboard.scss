@@ -13,7 +13,11 @@
 .dash-clock,
 .dash-weather,
 .dash-power {
-  min-height: 138px;
+  min-height: 148px;
+}
+
+.dash-weather {
+  min-width: 210px;
 }
 
 .dash-clock-time {
@@ -59,11 +63,11 @@
 }
 
 .dash-weather-icon {
-  font-size: 28px;
+  font-size: 34px;
 }
 
 .dash-weather-temp {
-  font-size: 26px;
+  font-size: 30px;
   color: $color6;
   font-weight: 700;
 }
@@ -86,26 +90,31 @@
 }
 
 .dash-power {
-  min-width: 124px;
+  min-width: 132px;
   padding: 10px;
 }
 
-.dash-power-btn {
-  min-width: 48px;
-  min-height: 44px;
-  border-radius: 14px;
-  font-size: 18px;
-  background-color: mix($background, $color1, 88%);
-  color: $color6;
+.dash-power-row {
+  min-height: 0;
 }
 
-.dash-power-lock { color: $color8; }
-.dash-power-sleep { color: $color10; }
-.dash-power-reboot { color: $color9; }
-.dash-power-off { color: $color6; }
+.dash-power-btn {
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  margin: 0;
+  border-radius: 14px;
+  background-color: mix($background, $color3, 70%);
+  color: $color7;
+}
+
+.dash-power-lock { color: $color7; }
+.dash-power-sleep { color: $color6; }
+.dash-power-reboot { color: $color5; }
+.dash-power-off { color: $color7; }
 
 .dash-power-btn:hover {
-  background-color: mix($background, $color1, 70%);
+  background-color: mix($background, $color4, 55%);
 }
 
 .dash-workspaces {
@@ -115,6 +124,7 @@
 .dash-ws {
   min-width: 28px;
   min-height: 32px;
+  padding: 0;
   border-radius: 8px;
   color: $color3;
   background-color: transparent;

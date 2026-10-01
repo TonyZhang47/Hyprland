@@ -43,20 +43,15 @@
 .quick-tile {
   min-width: 48px;
   min-height: 40px;
+  padding: 0;
   border-radius: 10px;
+  font-size: 16px;
+  color: $color6;
   background-color: mix($background, $color1, 88%);
 }
 
 .quick-tile-on {
   background-color: mix($background, $color5, 70%);
-}
-
-.quick-tile-btn {
-  min-width: 0;
-  min-height: 40px;
-  padding: 0;
-  font-size: 16px;
-  color: $color6;
 }
 
 .quick-tile:hover {

@@ -40,27 +40,50 @@
 (defwidget dash-power []
   (box :class "dash-card dash-power"
        :orientation "vertical"
-       :space-evenly true
+       :space-evenly false
        :spacing 8
+       :halign "fill"
+       :valign "fill"
+       :hexpand false
        :vexpand true
-    (box :orientation "horizontal" :space-evenly true :spacing 8 :vexpand true
-      (button :class "dash-power-btn dash-power-lock" :vexpand true :hexpand true
-              :tooltip "Lock"
-              :onclick "~/.config/eww/scripts/lock.sh &"
-        "")
-      (button :class "dash-power-btn dash-power-sleep" :vexpand true :hexpand true
-              :tooltip "Sleep"
-              :onclick "systemctl suspend"
-        "󰒲"))
-    (box :orientation "horizontal" :space-evenly true :spacing 8 :vexpand true
-      (button :class "dash-power-btn dash-power-reboot" :vexpand true :hexpand true
-              :tooltip "Reboot"
-              :onclick "systemctl reboot"
-        "󰜉")
-      (button :class "dash-power-btn dash-power-off" :vexpand true :hexpand true
-              :tooltip "Shut down"
-              :onclick "systemctl poweroff"
-        "󰐥"))))
+    (box :class "dash-power-row"
+         :orientation "horizontal"
+         :space-evenly false
+         :spacing 8
+         :halign "fill"
+         :hexpand true
+         :vexpand true
+      (icon-btn :class "dash-power-btn dash-power-lock"
+                :tooltip "Lock"
+                :onclick "~/.config/eww/scripts/lock.sh &"
+                :icon ""
+                :hexpand true
+                :vexpand true)
+      (icon-btn :class "dash-power-btn dash-power-sleep"
+                :tooltip "Sleep"
+                :onclick "systemctl suspend"
+                :icon "󰒲"
+                :hexpand true
+                :vexpand true))
+    (box :class "dash-power-row"
+         :orientation "horizontal"
+         :space-evenly false
+         :spacing 8
+         :halign "fill"
+         :hexpand true
+         :vexpand true
+      (icon-btn :class "dash-power-btn dash-power-reboot"
+                :tooltip "Reboot"
+                :onclick "systemctl reboot"
+                :icon "󰜉"
+                :hexpand true
+                :vexpand true)
+      (icon-btn :class "dash-power-btn dash-power-off"
+                :tooltip "Shut down"
+                :onclick "systemctl poweroff"
+                :icon "󰐥"
+                :hexpand true
+                :vexpand true))))
 
 (defwidget dash-workspaces []
   (eventbox :onscroll "~/.config/eww/scripts/bar-workspace.sh scroll {}"
@@ -74,7 +97,14 @@
         (button :class "dash-ws ${ws.occupied ? "occupied" : "empty"} ${bar-ws.active == ws.id ? "active" : ""}"
                 :onclick "~/.config/eww/scripts/bar-workspace.sh ${ws.id}"
                 :tooltip "Super+${ws.label}"
-          "${ws.label}")))))
+                :hexpand true
+                :halign "fill"
+                :valign "fill"
+          (label :halign "center"
+                 :valign "center"
+                 :xalign 0.5
+                 :yalign 0.5
+                 :text {ws.label}))))))
 
 (defwidget dash-folders []
   (box :class "dash-card dash-folders"

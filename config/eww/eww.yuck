@@ -41,6 +41,7 @@
 ;; wallpaper picker is a second instance in ~/.config/eww-wallpaper, so
 ;; recolouring these windows cannot reset its scroll position.
 
+(include "widgets/icon-btn.yuck")
 (include "widgets/resource-monitor.yuck")
 (include "widgets/device-control.yuck")
 (include "widgets/notifications.yuck")
